@@ -68,4 +68,4 @@ If you found a bug, please document it and open an issue on github.
 
 ### License
 
-[ttribution-NonCommercial-ShareAlike 4.0 International CC BY-NC-SA 4.0](ttps://creativecommons.org/licenses/by-nc-sa/4.0/)
+[Attribution-NonCommercial-ShareAlike 4.0 International CC BY-NC-SA 4.0](ttps://creativecommons.org/licenses/by-nc-sa/4.0/)
