@@ -4,6 +4,8 @@
 
 It's Simple.  An Alexa Skill interfaces to a Library on the Particle device which abstracts away all the calls and communication required to implement Amazon Home Automation Skills.  So now you can concentrate on bringing your devices to life instead of writting Lambdas, oAuth Servers and interfaces.
 
+What does that really mean?  Simple.  You link your Particle.IO account to your Amazon Alexa account, then when you make a device that includes home automation, you simply say, "Alexa, Discover Devices" and it will find your device.  And this interface supports a wide range of controls, not just on and off. 
+
 Using the EchoPhotonBridge, you'll be able to use phrases like:
     ```Alexa, Turn Photon Light On```,   ```Alexa, Make Photon Light Red```,
     ```Alexa, Lock File Cabinet```,  ```Alexa, what is the temperture of the blanket```
