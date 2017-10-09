@@ -26,7 +26,7 @@ The EchoPhotonBridge supports
 ### What you need?
   - [Purchase a Particle Photon](https://www.amazon.com/Particle-PHOTON-Comprehensive-Development-Access/dp/B016YNU1A0/ref=sr_1_fkmr0_1?ie=UTF8&qid=1501629481&sr=8-1-fkmr0&keywords=particle.io+photon) when you get it, Create a Particle IO Account then add your Photon to your Account using your smart phone.
   -  Program your Photon, in the Particle.io IDE, click on Libraries, search for EchoPhotonBridge and click on EchoPhotonBridge, then under examples, choose your what example to try.  Then flash your device.
-  - Add the [EchoPhotonBridge Particle IO Bridge Alexa Skill](https://www.amazon.com/Particle-IO-Bridge-IOT-Pimp/dp/B074M1SLKY/ref=sr_1_1?s=digital-skills&ie=UTF8&qid=1503176563&sr=1-1&keywords=particle) to your Amazon Echo.  You will be asked for your Particle.IO Bridge login, so login - this will give the skill access to your devices.  The bridge will scan your particle account for devices running the EchoPhotonBridge Library and interface them to Amazon.  
+  - Add the [Photon Smart Home Bridge Alexa Skill](https://www.amazon.com/Jeramie-LLC-Photon-Smart-Bridge/dp/B07637QNXP/ref=sr_1_1?s=digital-skills&ie=UTF8&qid=1507592469&sr=1-1&keywords=Photon+Smart+Home+Bridge) to your Amazon Echo.  You will be asked for your Particle.IO Bridge login, so login - this will give the skill access to your devices.  The bridge will scan your particle account for devices running the EchoPhotonBridge Library and interface them to Amazon.  
   - Ask "Alexa Discover Devices" to trigger scanning for new devices and find your new Photon.
 
 ### Got a Code Example?
