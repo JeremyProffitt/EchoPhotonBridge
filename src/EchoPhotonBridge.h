@@ -20,7 +20,7 @@ For known issues and notes, see the cpp file.
 #define __INC_EchoPhotonBridge_H
 
 #ifndef MAX_ECHO_DEVICESV2
-#define MAX_ECHO_DEVICESV2 5
+#define MAX_ECHO_DEVICESV2 20
 #endif
 
 #ifndef MAX_ECHO_DEVICESV3

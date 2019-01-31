@@ -444,38 +444,36 @@ void EchoPhotonBridge::_addEchoDeviceV3InputControl(int deviceIndex, String comm
 int EchoPhotonBridge::_getDeviceIndexV2(String deviceName)
 {
     int i = 0;
-    for(; i < _echoDeviceCountV2; i++) 
-    {
-        if (deviceName.toUpperCase() == _v2devices[i].name.toUpperCase())
-        {
+    while ( i < _echoDeviceCountV2) {
+        if (deviceName.toUpperCase() == _v2devices[i].name.toUpperCase()) {
             return i;
         }
+        i++;
+    }
+    if (i > MAX_ECHO_DEVICESV2) { 
+        return -1;      
     }
     i = _echoDeviceCountV2;
     _echoDeviceCountV2++;
     _v2devices[i].name = deviceName;
-    if (i > MAX_ECHO_DEVICESV2) { 
-        return -1;      
-    }
     return i;
 }
 
 int EchoPhotonBridge::_getDeviceIndexV3(String deviceName)
 {
-     int i = 0;
-    for(; i < _echoDeviceCountV3; i++) 
-    {
-        if (deviceName.toUpperCase() == _v3devices[i].name.toUpperCase())
-        {
+    int i = 0;
+    while ( i < _echoDeviceCountV3) {
+        if (deviceName.toUpperCase() == _v2devices[i].name.toUpperCase()) {
             return i;
         }
+        i++;
     }
-    i = _echoDeviceCountV3;
-    _echoDeviceCountV3++;
-    _v3devices[i].name = deviceName;
     if (i > MAX_ECHO_DEVICESV3) { 
         return -1;      
     }
+    i = _echoDeviceCountV3;
+    _echoDeviceCountV3++;
+    _v2devices[i].name = deviceName;
     return i;
 }
 
@@ -564,6 +562,5 @@ void EchoPhotonBridge::_updateDeviceConfigs()
     }
     echoDeviceConfigsV3 += "]}";
 }
-
 
 
