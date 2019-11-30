@@ -673,7 +673,9 @@ void EchoPhotonBridge::_updateDeviceConfigs()
     echoDeviceConfigsV2 = "{\"Version\":2,\"Devices\":["; //denotes configuration type 01
     for (int i = 0; i < _echoDeviceCountV2; i++)
     {
-        echoDeviceConfigsV2 += "{\"name\":\"" + _v2devices[i].name + "\",\"type\":" + _v2devices[i].type + "}";
+        //echoDeviceConfigsV2 += "{\"name\":\"" + _v2devices[i].name + "\",\"type\":" + _v2devices[i].type + "}";
+        echoDeviceConfigsV2 += "{\"name\":\"" + _v2devices[i].name + "\",\"type\":" + String(_v2devices[i].type) + "}";
+
         if (i + 1 < _echoDeviceCountV2)
             echoDeviceConfigsV2 += ",";
     }
@@ -682,7 +684,9 @@ void EchoPhotonBridge::_updateDeviceConfigs()
     echoDeviceConfigsV3 = "{\"Version\":3,\"Devices\":["; //denotes configuration type 01
     for (int i = 0; i < _echoDeviceCountV3; i++)
     {
-        echoDeviceConfigsV3 += "{\"name\":\"" + _v3devices[i].name + "\",\"type\":" + _v3devices[i].name + "}";
+        //echoDeviceConfigsV3 += "{\"name\":\"" + _v3devices[i].name + "\",\"type\":" + _v3devices[i].name + "}";
+        echoDeviceConfigsV3 += "{\"name\":\"" + _v3devices[i].name + "\",\"type\":" + String(_v3devices[i].type) + "}";
+
         if (i + 1 < _echoDeviceCountV3)
             echoDeviceConfigsV3 += ",";
     }
