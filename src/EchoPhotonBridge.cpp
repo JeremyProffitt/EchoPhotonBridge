@@ -24,6 +24,11 @@ Known issues:
 
 EchoPhotonBridge::EchoPhotonBridge() 
 {
+}
+
+void _init_class() 
+{
+    _init_required = false;
     Particle.variable("echoDeviceV2", EchoPhotonBridge::echoDeviceConfigsV2);
     Particle.function("echoCmdV2",  &EchoPhotonBridge::callEchoFunctionV2, this);
     Particle.variable("echoDeviceV3", EchoPhotonBridge::echoDeviceConfigsV3);
@@ -33,7 +38,7 @@ EchoPhotonBridge::EchoPhotonBridge()
 
 int EchoPhotonBridge::callEchoFunctionV2(String value)
 {
-    
+    if (_init_required) _init_class();
     int device = _stoi(_getValue(value, ':', 0));
     int function = _stoi(_getValue(value, ':', 1));
     String params = _getValue(value, ':', 2);
@@ -100,6 +105,7 @@ int EchoPhotonBridge::callEchoFunctionV2(String value)
 
 int EchoPhotonBridge::callEchoFunctionV3(String value)
 {
+    if (_init_required) _init_class();
     int device = _stoi(_getValue(value, ':', 0));
     int function = _stoi(_getValue(value, ':', 1));
     String params = _getValue(value, ':', 2);
@@ -181,6 +187,7 @@ void EchoPhotonBridge::addEchoDeviceV2(String deviceName,
                     functionTemp fTemp,
                     functionLightTemp fLightTemp)
 {
+    if (_init_required) _init_class();
     //Check if we have enough devices available to use.
     if (_echoDeviceCountV2 > MAX_ECHO_DEVICESV2) return;
     int deviceIndex = _getDeviceIndexV2(deviceName);
@@ -198,6 +205,7 @@ void EchoPhotonBridge::addEchoDeviceV2(String deviceName,
 
 void EchoPhotonBridge::addEchoDeviceV2OnOff(String deviceName, functionOnOff fOnOff)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV2(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV2OnOff(deviceIndex, fOnOff);
@@ -206,6 +214,7 @@ void EchoPhotonBridge::addEchoDeviceV2OnOff(String deviceName, functionOnOff fOn
 
 void EchoPhotonBridge::addEchoDeviceV2Percent(String deviceName, functionPercent fPercent)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV2(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV2Percent(deviceIndex, fPercent);
@@ -214,6 +223,7 @@ void EchoPhotonBridge::addEchoDeviceV2Percent(String deviceName, functionPercent
 
 void EchoPhotonBridge::addEchoDeviceV2Color(String deviceName, functionColor fColor)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV2(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV2Color(deviceIndex, fColor);
@@ -222,6 +232,7 @@ void EchoPhotonBridge::addEchoDeviceV2Color(String deviceName, functionColor fCo
 
 void EchoPhotonBridge::addEchoDeviceV2Lock(String deviceName, functionLock fLock)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV2(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV2Lock(deviceIndex, fLock);
@@ -230,6 +241,7 @@ void EchoPhotonBridge::addEchoDeviceV2Lock(String deviceName, functionLock fLock
 
 void EchoPhotonBridge::addEchoDeviceV2Temp(String deviceName, functionTemp fTemp)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV2(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV2Temp(deviceIndex, fTemp);
@@ -238,6 +250,7 @@ void EchoPhotonBridge::addEchoDeviceV2Temp(String deviceName, functionTemp fTemp
 
 void EchoPhotonBridge::addEchoDeviceV2LightTemp(String deviceName, functionLightTemp fLightTemp)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV2(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV2LightTemp(deviceIndex, fLightTemp);
@@ -245,6 +258,7 @@ void EchoPhotonBridge::addEchoDeviceV2LightTemp(String deviceName, functionLight
 }
 
 EchoPhotonBridge::colorInRGB EchoPhotonBridge::getLightColor(int deviceIndex) {
+    if (_init_required) _init_class();
     return _v2devices[deviceIndex].rgb;
 }
 
@@ -260,6 +274,7 @@ void EchoPhotonBridge::addEchoDeviceV3(String deviceName,
                     functionInputControl fInputControl,
                     String commaSeperatedInputList) 
 {
+    if (_init_required) _init_class();
      //Check if we have enough devices available to use.
     if (_echoDeviceCountV3 > MAX_ECHO_DEVICESV3) return;
     int deviceIndex = _getDeviceIndexV3(deviceName);
@@ -277,6 +292,7 @@ void EchoPhotonBridge::addEchoDeviceV3(String deviceName,
 
 void EchoPhotonBridge::addEchoDeviceV3OnOff(String deviceName, functionOnOff fOnOff)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV3(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV3OnOff(deviceIndex, fOnOff);
@@ -285,6 +301,7 @@ void EchoPhotonBridge::addEchoDeviceV3OnOff(String deviceName, functionOnOff fOn
 
 void EchoPhotonBridge::addEchoDeviceV3VolumePercent(String deviceName, functionVolumePercent fVolumePercent)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV3(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV3VolumePercent(deviceIndex, fVolumePercent);
@@ -293,6 +310,7 @@ void EchoPhotonBridge::addEchoDeviceV3VolumePercent(String deviceName, functionV
 
 void EchoPhotonBridge::addEchoDeviceV3VolumeStep(String deviceName, functionVolumeStep fVolumeStep)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV3(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV3VolumeStep(deviceIndex, fVolumeStep);
@@ -301,6 +319,7 @@ void EchoPhotonBridge::addEchoDeviceV3VolumeStep(String deviceName, functionVolu
 
 void EchoPhotonBridge::addEchoDeviceV3Channel(String deviceName, String commaSeperatedChannelList, functionChannel fChannel)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV3(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV3Channel(deviceIndex, commaSeperatedChannelList, fChannel);
@@ -309,6 +328,7 @@ void EchoPhotonBridge::addEchoDeviceV3Channel(String deviceName, String commaSep
 
 void EchoPhotonBridge::addEchoDeviceV3MediaControl(String deviceName, functionMediaControl fMediaControl)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV3(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV3MediaControl(deviceIndex, fMediaControl);
@@ -317,6 +337,7 @@ void EchoPhotonBridge::addEchoDeviceV3MediaControl(String deviceName, functionMe
 
 void EchoPhotonBridge::addEchoDeviceV3InputControl(String deviceName, String commaSeperatedInputList, functionInputControl fInputControl)
 {
+    if (_init_required) _init_class();
     int deviceIndex = _getDeviceIndexV3(deviceName);
     if (deviceIndex == -1) return;
     _addEchoDeviceV3InputControl(deviceIndex, commaSeperatedInputList, fInputControl);
@@ -327,7 +348,7 @@ EchoPhotonBridge::colorInRGB EchoPhotonBridge::kelvinToRGB(int tempInKelvin) {
     EchoPhotonBridge::colorInRGB answer;
     
     //Algorithm from http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
-    
+    if (_init_required) _init_class();
     int temp = tempInKelvin / 100;
     
     if (temp <= 66) {
@@ -360,60 +381,70 @@ EchoPhotonBridge::colorInRGB EchoPhotonBridge::kelvinToRGB(int tempInKelvin) {
 
 void EchoPhotonBridge::_addEchoDeviceV2OnOff(int deviceIndex, functionOnOff fOnOff)
 {
+    if (_init_required) _init_class();
     _v2devices[deviceIndex].fOnOff = fOnOff;
     _v2devices[deviceIndex].type = _setBit(_v2devices[deviceIndex].type,DEVICETYPEV2_ONOFF);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV2Percent(int deviceIndex, functionPercent fPercent)
 {
+    if (_init_required) _init_class();
     _v2devices[deviceIndex].fPercent = fPercent;
     _v2devices[deviceIndex].type = _setBit(_v2devices[deviceIndex].type,DEVICETYPEV2_PERCENT);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV2Color(int deviceIndex, functionColor fColor)
 {
+    if (_init_required) _init_class();
     _v2devices[deviceIndex].fColor = fColor;
     _v2devices[deviceIndex].type = _setBit(_v2devices[deviceIndex].type,DEVICETYPEV2_COLOR);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV2Lock(int deviceIndex, functionLock fLock)
 {
+    if (_init_required) _init_class();
     _v2devices[deviceIndex].fLock = fLock;
     _v2devices[deviceIndex].type = _setBit(_v2devices[deviceIndex].type,DEVICETYPEV2_LOCK);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV2Temp(int deviceIndex, functionTemp fTemp)
 {
+    if (_init_required) _init_class();
     _v2devices[deviceIndex].fTemp = fTemp;
     _v2devices[deviceIndex].type = _setBit(_v2devices[deviceIndex].type,DEVICETYPEV2_TEMP);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV2LightTemp(int deviceIndex, functionLightTemp fLightTemp)
 {
+    if (_init_required) _init_class();
     _v2devices[deviceIndex].fLightTemp = fLightTemp;
     _v2devices[deviceIndex].type = _setBit(_v2devices[deviceIndex].type,DEVICETYPEV2_LIGHTTEMP);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV3OnOff(int deviceIndex, functionOnOff fOnOff)
 {
+    if (_init_required) _init_class();
     _v3devices[deviceIndex].fOnOff = fOnOff;
     _v3devices[deviceIndex].type = _setBit(_v3devices[deviceIndex].type,DEVICETYPEV3_ONOFF);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV3VolumePercent(int deviceIndex, functionVolumePercent fVolumePercent)
 {
+    if (_init_required) _init_class();
     _v3devices[deviceIndex].fVolumePercent = fVolumePercent;
    _v3devices[deviceIndex].type = _setBit(_v3devices[deviceIndex].type,DEVICETYPEV3_VOLUMEPERCENT);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV3VolumeStep(int deviceIndex, functionVolumeStep fVolumeStep)
 {
+    if (_init_required) _init_class();
     _v3devices[deviceIndex].fVolumeStep = fVolumeStep;
     _v3devices[deviceIndex].type = _setBit(_v3devices[deviceIndex].type,DEVICETYPEV3_VOLUMESTEP);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV3Channel(int deviceIndex, String commaSeperatedChannelList, functionChannel fChannel)
 {
+    if (_init_required) _init_class();
     _v3devices[deviceIndex].fChannel = fChannel;
     _v3devices[deviceIndex].type = _setBit(_v3devices[deviceIndex].type,DEVICETYPEV3_CHANNEL);
     //Turn the channel list into a json list.
@@ -422,12 +453,14 @@ void EchoPhotonBridge::_addEchoDeviceV3Channel(int deviceIndex, String commaSepe
 
 void EchoPhotonBridge::_addEchoDeviceV3MediaControl(int deviceIndex, functionMediaControl fMediaControl)
 {
+    if (_init_required) _init_class();
     _v3devices[deviceIndex].fMediaControl = fMediaControl;
     _v3devices[deviceIndex].type = _setBit(_v3devices[deviceIndex].type,DEVICETYPEV3_MEDIACONTROL);
 }
 
 void EchoPhotonBridge::_addEchoDeviceV3InputControl(int deviceIndex, String commaSeperatedInputList, functionInputControl fInputControl)
 {
+    if (_init_required) _init_class();
     _v3devices[deviceIndex].fInputControl = fInputControl;
     _v3devices[deviceIndex].type = _setBit(_v3devices[deviceIndex].type,DEVICETYPEV3_INPUTCONTROL);
     //Turn the Input list into a json list.

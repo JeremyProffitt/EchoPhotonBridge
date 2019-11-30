@@ -118,6 +118,9 @@ class EchoPhotonBridge {
  
     private:
     
+        bool _init_required = true;
+        void _init_class();
+
         //V2 Add Devices
         void _addEchoDeviceV2OnOff(int deviceIndex, functionOnOff fOnOff);
         void _addEchoDeviceV2Percent(int deviceIndex, functionPercent fPercent);
@@ -140,7 +143,7 @@ class EchoPhotonBridge {
             functionTemp fTemp;
             functionLightTemp fLightTemp;
             
-            //Current Device Settings, Temp, Percent, Color
+            //Current Device Settings, Temp, percent, Color
             int percent;
             int temp;
             int lightTemp;
