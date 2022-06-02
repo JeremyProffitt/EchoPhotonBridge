@@ -7,6 +7,7 @@ EchoPhotonBridge epb;
 int functionOnOff(int device, bool onOff, String rawParameters)
 {
     digitalWrite(D7, (onOff) ? HIGH : LOW);
+    return 0;
 }
 
 //  REMINDER: Tell your echo, "Alexa, Discover Devices" after you program your photon so Amazon picks it up.
